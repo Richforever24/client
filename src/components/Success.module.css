@@ -1,0 +1,82 @@
+/* Parent container */
+.parentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("/desktop-background-layer-image.jpeg");
+  text-align: center;
+  flex-direction: column;
+}
+
+/* Container for the checkmark and message */
+.successContainer {
+  background-color: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Success Message */
+.message {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4caf50;
+  margin-top: 20px;
+  font-family: sans-serif;
+}
+
+/* Checkmark animation */
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #4caf50;
+  position: relative;
+  animation: scaleIn 0.6s ease-out;
+}
+
+.checkmark::before {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  border: 5px solid white;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+  animation: draw 0.3s ease-out 0.6s forwards;
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes draw {
+  0% {
+    width: 0;
+    height: 0;
+  }
+  100% {
+    width: 30px;
+    height: 15px;
+  }
+}
+
+/* Countdown message */
+.countdown {
+  font-size: 14px;
+  margin-top: 20px;
+  color: #555;
+}

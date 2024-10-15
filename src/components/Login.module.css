@@ -1,0 +1,180 @@
+/* Parent container with background image */
+.parentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("/desktop-background-layer-image.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Inner container that contains the login form and right image */
+.innerContainer {
+  display: flex;
+  width: 70%; /* Adjust width */
+  max-width: 1000px; /* Maximum width for larger screens */
+  height: 80%; /* Adjust height for better display */
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Left section for login form */
+.loginForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px; /* Adjusted padding */
+  background-color: white;
+}
+
+.logo {
+  width: 160px; /* Smaller logo size */
+  margin-bottom: 20px;
+}
+
+.inputGroup {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #f5f5f5;
+}
+
+.input::placeholder {
+  color: #9e9e9e;
+}
+
+.showPassword {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.rememberMe {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #f0f9f0;
+  padding: 8px 12px;
+  border-radius: 4px;
+}
+
+.rememberMe input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4caf50;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.rememberMe input[type="checkbox"]:checked {
+  background-color: #1d8901;
+}
+
+.rememberMe label {
+  font-size: 14px;
+  color: #333;
+}
+
+.loginButton {
+  width: 100%;
+  padding: 12px;
+  background-color: #1d8901;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.loginButton:hover {
+  background-color: #45a049;
+}
+
+.links {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* .links a {
+  display: block;
+  margin-bottom: 10px;
+  color: #4caf50;
+  text-decoration: none;
+} */
+.forget {
+  display: block;
+  margin-bottom: 15px;
+  color: black;
+  font-family: sans-serif;
+  text-decoration: none;
+  font-size: 13px;
+}
+.directs {
+  color: #007bff;
+}
+.lasttwo {
+  display: flex;
+  flex-direction: column;
+}
+.enrollLink {
+  color: #1d8901;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.joinLink {
+  color: #007bff;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+/* Right section for promotional image */
+.rightImage {
+  flex: 1;
+  background-image: url("/desktop-login-image.jpeg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 768px) {
+  .innerContainer {
+    flex-direction: column;
+    width: 90%; /* Expand width on mobile */
+    max-width: 100%; /* Full width on smaller devices */
+    height: auto; /* Adjust height for content */
+    padding: 20px;
+  }
+
+  .loginForm {
+    padding: 20px; /* Reduce padding on mobile */
+  }
+
+  .rightImage {
+    display: none; /* Hide right section on mobile */
+  }
+
+  .logo {
+    width: 140px; /* Adjust logo size */
+  }
+}

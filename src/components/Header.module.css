@@ -1,0 +1,49 @@
+.header {
+  background-color: #1d8901;
+  padding: 10px 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.leftMenu,
+.rightMenu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.leftMenu li,
+.rightMenu li {
+  margin: 0 10px;
+}
+
+.leftMenu a,
+.rightMenu a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .leftMenu li:nth-child(2), /* Remove Español */
+    .rightMenu li:nth-child(2) /* Remove Locations */ {
+    display: none;
+  }
+
+  .leftMenu a,
+  .rightMenu a {
+    font-size: 16px; /* Larger text on mobile for readability */
+  }
+
+  .nav {
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 20px;
+  }
+}
