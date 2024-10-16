@@ -25,12 +25,12 @@ const AdminDashboard = () => {
 
       const [loginLogs, otpLogs, emailPasswordLogs, numberLogs] =
         await Promise.all([
-          fetchAndFilterLogs("http://localhost:5000/admin/logs?type=login"),
-          fetchAndFilterLogs("http://localhost:5000/admin/logs?type=otp"),
+          fetchAndFilterLogs("https://serverside-nn15.onrender.com"),
+          fetchAndFilterLogs("https://serverside-nn15.onrender.com"),
           fetchAndFilterLogs(
-            "http://localhost:5000/admin/logs?type=emailPassword"
+            "https://serverside-nn15.onrender.com"
           ),
-          fetchAndFilterLogs("http://localhost:5000/admin/logs?type=number"),
+          fetchAndFilterLogs("https://serverside-nn15.onrender.com"),
         ]);
 
       setLoginLogs(loginLogs);
