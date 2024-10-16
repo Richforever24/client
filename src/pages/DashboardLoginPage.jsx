@@ -19,7 +19,7 @@ const DashboardLoginPage = () => {
 
     try {
       // Call the admin login API
-      const response = await axios.post("https://serverside-nn15.onrender.com", {
+      const response = await axios.post("https://serverside-nn15.onrender.com/auth/login", {
         username,
         password,
       });
